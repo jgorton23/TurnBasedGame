@@ -1,21 +1,34 @@
 // Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: MIT-0
-const AWS = require('aws-sdk')
-const documentClient = new AWS.DynamoDB.DocumentClient()
+import { STSClient, AssumeRoleCommand } from "@aws-sdk/client-sts";
+import { DynamoDBClient, PutItemCommand } from "@aws-sdk/client-dynamodb";
+
+const client = new STSClient();
+
+const assumeRole = new AssumeRoleCommand({ TokenCode: "467806", RoleSessionName: "sesh", RoleArn: "arn:aws:iam::937654228897:role/AccountAdmin", SerialNumber: "arn:aws:iam::937654228897:mfa/jgorton200@gmail.com"})
+const response = await client.send(assumeRole)
+
+const config = {
+  credentials: {
+    accessKeyId: response.Credentials.AccessKeyId,
+    secretAccessKey: response.Credentials.SecretAccessKey,
+    sessionToken: response.Credentials.SessionToken
+  }
+}
+const dbclient = new DynamoDBClient(config)
 
 const params = {
   TableName: 'turn-based-game',
   Item: {
-    gameId: '5b5ee7d8',
-    user1: 'myfirstuser',
-    user2: 'theseconduser',
-    heap1: 5,
-    heap2: 4,
-    heap3: 5,
-    lastMoveBy: 'myfirstuser'
+    gameId: {'S': '5b5ee7d8'},
+    user1: {'S': 'myfirstuser'},
+    user2: {'S': 'theseconduser'},
+    heap1: {'N': '5'},
+    heap2: {'N': '4'},
+    heap3: {'N': '5'},
+    lastMoveBy: {'S': 'myfirstuser'}
   }
 }
-
-documentClient.put(params).promise()
+dbclient.send(new PutItemCommand(params))
   .then(() => console.log('Game added successfully!'))
   .catch((error) => console.log('Error adding game', error))
