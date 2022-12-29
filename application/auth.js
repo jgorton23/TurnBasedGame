@@ -2,12 +2,11 @@
 // SPDX-License-Identifier: MIT-0
 import { CognitoIdentityProviderClient, SignUpCommand,
   AdminConfirmSignUpCommand, AdminInitiateAuthCommand, 
-  AdminGetUserCommand } from "aws-sdk/client-cognito-identity-provider";
+  AdminGetUserCommand } from "@aws-sdk/client-cognito-identity-provider";
 
-// const jwt = require("jsonwebtoken");
-import { jwt } from "jsonwebtoken";
-// const jwksClient = require("jwks-rsa");
-import { JwksClient } from "jwks-rsa";
+import jwt from "jsonwebtoken";
+
+import jwksClient from "jwks-rsa";
 
 const cognito = new CognitoIdentityProviderClient()
 
