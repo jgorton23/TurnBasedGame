@@ -6,7 +6,7 @@ import { CognitoIdentityProviderClient, SignUpCommand,
 const jwt = require("jsonwebtoken");
 const jwksClient = require("jwks-rsa");
 
-const cognitoidentityserviceprovider = new AWS.CognitoIdentityServiceProvider();
+const cognito = new CognitoIdentityProviderClient()
 
 const client = jwksClient({
   strictSsl: true, // Default value
@@ -29,12 +29,12 @@ const createCognitoUser = async (username, password, email, phoneNumber) => {
       }
     ]
   };
-  await cognitoidentityserviceprovider.signUp(signUpParams).promise();
+  await cognito.send(new SignUpCommand(signUpParams));
   const confirmParams = {
     UserPoolId: process.env.USER_POOL_ID,
     Username: username
   };
-  await cognitoidentityserviceprovider.adminConfirmSignUp(confirmParams).promise();
+  await cognito.send(new AdminConfirmSignUpCommand(confirmParams));
   return {
     username,
     email,
@@ -54,7 +54,7 @@ const login = async (username, password) => {
   };
   const {
     AuthenticationResult: { IdToken: idToken }
-  } = await cognitoidentityserviceprovider.adminInitiateAuth(params).promise();
+  } = await cognito.send(new AdminInitiateAuthCommand(params));
   return idToken;
 };
 
@@ -63,7 +63,7 @@ const fetchUserByUsername = async username => {
     UserPoolId: process.env.USER_POOL_ID,
     Username: username
   };
-  const user = await cognitoidentityserviceprovider.adminGetUser(params).promise();
+  const user = await cognito.send(new AdminGetUserCommand(params));
   const phoneNumber = user.UserAttributes.filter(attribute => attribute.Name === "phone_number")[0].Value;
   return {
     username,
