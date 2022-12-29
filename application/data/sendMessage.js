@@ -1,7 +1,8 @@
 // Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: MIT-0
-const AWS = require("aws-sdk");
-const sns = new AWS.SNS();
+import { SNSClient, PublishCommand } from '@aws-sdk/client-sns'
+
+sns = new SNSClient();
 
 const sendMessage = async ({ phoneNumber, message }) => {
   const params = {
@@ -9,7 +10,8 @@ const sendMessage = async ({ phoneNumber, message }) => {
     PhoneNumber: phoneNumber
   };
 
-  return sns.publish(params).promise();
+  response = await sns.send(new PublishCommand(params));
+  return response;
 };
 
 module.exports = sendMessage;
