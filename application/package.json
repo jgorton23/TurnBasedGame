@@ -9,7 +9,10 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "type": "module",
   "dependencies": {
+    "@aws-sdk/client-cognito-identity-provider": "^3.241.0",
+    "@aws-sdk/client-sns": "^3.241.0",
     "aws-sdk": "^2.1283.0",
     "aws-serverless-express": "^3.3.6",
     "express": "^4.17.1",

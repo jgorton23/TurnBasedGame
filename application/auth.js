@@ -3,8 +3,11 @@
 import { CognitoIdentityProviderClient, SignUpCommand,
   AdminConfirmSignUpCommand, AdminInitiateAuthCommand, 
   AdminGetUserCommand } from "aws-sdk/client-cognito-identity-provider";
-const jwt = require("jsonwebtoken");
-const jwksClient = require("jwks-rsa");
+
+// const jwt = require("jsonwebtoken");
+import { jwt } from "jsonwebtoken";
+// const jwksClient = require("jwks-rsa");
+import { JwksClient } from "jwks-rsa";
 
 const cognito = new CognitoIdentityProviderClient()
 
