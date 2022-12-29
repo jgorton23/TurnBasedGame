@@ -1,6 +1,8 @@
 // Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: MIT-0
-const AWS = require("aws-sdk");
+import { CognitoIdentityProviderClient, SignUpCommand,
+  AdminConfirmSignUpCommand, AdminInitiateAuthCommand, 
+  AdminGetUserCommand } from "aws-sdk/client-cognito-identity-provider";
 const jwt = require("jsonwebtoken");
 const jwksClient = require("jwks-rsa");
 
