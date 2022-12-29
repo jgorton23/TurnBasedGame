@@ -4,7 +4,7 @@ import { DynamoDBClient, PutItemCommand } from "@aws-sdk/client-dynamodb";
 const uuidv4 = require("uuid/v4");
 const sendMessage = require("./sendMessage");
 
-dbclient = new DynamoDBClient()
+const dbclient = new DynamoDBClient()
 
 const createGame = async ({ creator, opponent }) => {
   const params = {
