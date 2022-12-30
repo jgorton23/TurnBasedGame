@@ -20,4 +20,5 @@ const handlePostMoveNotification = async ({ game, mover, opponent }) => {
   await sendMessage({ phoneNumber: opponent.phoneNumber, message })
 };
 
-module.exports = handlePostMoveNotification;
+// module.exports = handlePostMoveNotification;
+export default handlePostMoveNotification;

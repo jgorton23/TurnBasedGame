@@ -64,8 +64,8 @@ const validatePerformMove = body => {
   };
 };
 
-module.exports = {
+export {
   validateCreateUser,
   validateCreateGame,
   validatePerformMove
-};
+}

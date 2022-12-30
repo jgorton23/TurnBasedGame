@@ -30,4 +30,5 @@ const performMove = async ({ gameId, user, changedHeap, changedHeapValue }) => {
   }
 };
 
-module.exports = performMove
+// module.exports = performMove
+export default performMove;

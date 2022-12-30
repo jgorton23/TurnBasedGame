@@ -12,6 +12,7 @@
   "type": "module",
   "dependencies": {
     "@aws-sdk/client-cognito-identity-provider": "^3.241.0",
+    "@aws-sdk/client-dynamodb": "^3.241.0",
     "@aws-sdk/client-sns": "^3.241.0",
     "aws-sdk": "^2.1283.0",
     "aws-serverless-express": "^3.3.6",
@@ -19,6 +20,6 @@
     "joi": "^14.3.1",
     "jsonwebtoken": "^8.5.1",
     "jwks-rsa": "^1.6.0",
-    "uuid": "^3.3.3"
+    "uuidv4": "^6.2.13"
   }
 }

@@ -21,4 +21,5 @@ const fetchGame = async gameId => {
   }
 };
 
-module.exports = fetchGame;
+// module.exports = fetchGame;
+export default fetchGame;

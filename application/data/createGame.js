@@ -1,7 +1,7 @@
 // Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: MIT-0
 import { DynamoDBClient, PutItemCommand } from "@aws-sdk/client-dynamodb";
-const uuidv4 = require("uuid/v4");
+import uuid from "uuidv4";
 const sendMessage = require("./sendMessage");
 
 const dbclient = new DynamoDBClient()
@@ -10,7 +10,7 @@ const createGame = async ({ creator, opponent }) => {
   const params = {
     TableName: "turn-based-game",
     Item: {
-      gameId: {'S': uuidv4().split('-')[0]},
+      gameId: {'S': uuid().split('-')[0]},
       user1: {'S': creator},
       user2: {'S': opponent.username},
       heap1: {'N': 5},
@@ -38,4 +38,5 @@ const createGame = async ({ creator, opponent }) => {
   return params.Item;
 };
 
-module.exports = createGame;
+export default createGame;
+// module.exports = createGame;

@@ -1,13 +1,9 @@
 // Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: MIT-0
-import { express } from "express";
-
+import express from "express";
 import bodyParser from "body-parser";
-
 import { createGame, fetchGame, performMove, handlePostMoveNotification } from "./data/index.js";
-
 import { createCognitoUser, login, fetchUserByUsername, verifyToken } from "./auth.js";
-
 import { validateCreateUser, validateCreateGame, validatePerformMove } from "./validate.js";
 
 const app = express();

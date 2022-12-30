@@ -3,9 +3,7 @@
 import { CognitoIdentityProviderClient, SignUpCommand,
   AdminConfirmSignUpCommand, AdminInitiateAuthCommand, 
   AdminGetUserCommand } from "@aws-sdk/client-cognito-identity-provider";
-
 import jwt from "jsonwebtoken";
-
 import jwksClient from "jwks-rsa";
 
 const cognito = new CognitoIdentityProviderClient()
@@ -91,7 +89,7 @@ const verifyToken = async idToken => {
   });
 };
 
-module.exports = {
+export {
   createCognitoUser,
   login,
   fetchUserByUsername,
