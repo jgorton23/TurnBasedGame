@@ -38,4 +38,3 @@ const createGame = async ({ creator, opponent }) => {
 };
 
 export default createGame;
-// module.exports = createGame;
