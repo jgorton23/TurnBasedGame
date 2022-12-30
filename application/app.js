@@ -88,5 +88,4 @@ app.use(function(error, req, res, next) {
   res.status(400).json({ message: error.message });
 });
 
-console.log("working");
-export { app };
+export default app;
