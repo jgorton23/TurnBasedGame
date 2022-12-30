@@ -1,7 +1,7 @@
 // Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: MIT-0
 
-const sendMessage = require('./sendMessage')
+import { sendMessage } from "./sendMessage.js";
 
 const handlePostMoveNotification = async ({ game, mover, opponent }) => {
   // Handle when game is finished
@@ -20,5 +20,4 @@ const handlePostMoveNotification = async ({ game, mover, opponent }) => {
   await sendMessage({ phoneNumber: opponent.phoneNumber, message })
 };
 
-// module.exports = handlePostMoveNotification;
 export default handlePostMoveNotification;

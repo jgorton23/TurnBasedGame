@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: MIT-0
 import { SNSClient, PublishCommand } from '@aws-sdk/client-sns'
 
-sns = new SNSClient();
+const sns = new SNSClient();
 
 const sendMessage = async ({ phoneNumber, message }) => {
   const params = {
@@ -14,4 +14,4 @@ const sendMessage = async ({ phoneNumber, message }) => {
   return response;
 };
 
-module.exports = sendMessage;
+export { sendMessage };

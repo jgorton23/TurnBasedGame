@@ -2,8 +2,7 @@
 // SPDX-License-Identifier: MIT-0
 import { DynamoDBClient, PutItemCommand } from "@aws-sdk/client-dynamodb";
 import uuid from "uuidv4";
-const sendMessage = require("./sendMessage");
-
+import { sendMessage } from "./sendMessage.js"
 const dbclient = new DynamoDBClient()
 
 const createGame = async ({ creator, opponent }) => {

@@ -1,6 +1,6 @@
 // Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: MIT-0
-const Joi = require("joi");
+import Joi from "joi";
 
 const extractError = error => {
   return error.details[0].message;

@@ -89,4 +89,4 @@ app.use(function(error, req, res, next) {
 });
 
 console.log("working");
-module.exports = app;
+export { app };
